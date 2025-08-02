@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Declaração de Amor 💖</title>
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Canvas de fundo -->
+  <canvas id="matrix"></canvas>
+  <canvas id="canvas"></canvas>
+
+  <!-- Menu hamburguer -->
+  <nav class="menu">
+    <div class="hamburger" id="hamburger">&#9776;</div>
+    <ul class="menu-list" id="menu-list">
+      <li><a href="#" id="btnInicio">Tela Inicial</a></li>
+      <li><a href="#" id="btnEnvelope">Envelope</a></li>
+    </ul>
+  </nav>
+
+  <!-- Tela Inicial -->
+  <div class="container" id="telaInicial">
+    <div id="heart" class="heart"></div>
+    <div id="message" class="message">Eu te amo 💖</div>
+    <audio id="explosaoSom" src="URL_DA_EXPLOSAO.mp3" preload="auto"></audio>
+    <audio id="musicaAlianca" preload="auto" autoplay loop>
+      <source src="https://s105-isny.freeconvert.com/task/688e1fa535e5168e5f6978e3/videoplayback.mp3" type="audio/mp3" />
+    </audio>
+  </div>
+
+  <!-- Envelope padrão -->
+  <div id="envelope" class="hidden">
+    <div class="envelope-shape">
+      <div class="envelope-body animated">
+        <div class="envelope-front">
+          <p><strong>Remetente:</strong> Guilherme Gomes</p>
+          <p><strong>Destinatária:</strong> Heloisa Teixeira</p>
+          <button id="abrirCarta">Abrir Carta 💌</button>
+
+          <div class="imagens-lado-a-lado">
+            <div class="bloco-imagem esquerda"></div>
+            <div class="bloco-imagem direita"></div>
+            <div class="bloco-imagem esquerda"></div>
+            <div class="bloco-imagem direita"></div>
+            <div class="bloco-imagem esquerda"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Envelope com efeito 3D -->
+  <div id="envelope3D" class="hidden">
+    <div class="flap"></div>
+    <div class="letter">
+      Querida pessoa amada...<br><br>
+      Esta carta é para dizer que o amor explode infinitamente por você! ❤️
+    </div>
+  </div>
+
+  <!-- Carta aberta -->
+  <div id="cartaAberta" class="hidden">
+    <div class="carta-conteudo">
+      <h1>Para: Heloisa Teixeira 💖</h1>
+      <p>Com amor, de Guilherme Gomes 📝</p>
+      <button id="irParaMomentos">Ir para Momentos Especiais 🌠</button>
+      <ul class="motivos-lista">
+        <li>Seu sorriso ilumina meu mundo.</li>
+        <li>Seu olhar me traz paz.</li>
+        <li>Seu jeito me desmonta e me refaz.</li>
+        <li>Amar você é como respirar: natural e vital.</li>
+        <li>Você é a inspiração por trás dos meus melhores dias.</li>
+        <li>Seus olhos têm a profundidade de um oceano calmo.</li>
+        <li>Você é o meu verso mais verdadeiro.</li>
+        <li>Seu amor é meu abrigo favorito.</li>
+        <li>Quando estou com você, o tempo pausa e o mundo sorri.</li>
+        <li>Você é a canção que nunca sai da minha cabeça.</li>
+        <li>Seu carinho é remédio pra minha alma.</li>
+        <li>Você é meu lugar seguro.</li>
+        <li>Sua beleza me encanta todos os dias.</li>
+        <li>Seu toque desperta o melhor de mim.</li>
+        <li>Com você, tudo vira poesia.</li>
+        <li>Você é minha mais linda coincidência.</li>
+        <li>Seu jeito é como o sol: aquece, ilumina e dá vida.</li>
+      </ul>
+      <button id="btnSubir">↑ Topo</button>
+    </div>
+  </div>
+
+  <!-- Galeria -->
+  <div id="galeria" class="hidden">
+    <div class="carrossel">
+      <div class="slide active">
+        <img src="https://cdn.corenexis.com/file/c/54489352.jpg" alt="Foto 1" />
+        <p class="legenda">A primeira vez que te vi, meu mundo virou poesia.</p>
+      </div>
+      <!-- Demais slides... -->
+      <div class="navegacao-carrossel">
+        <button id="prevFoto">⟨</button>
+        <button id="nextFoto">⟩</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Momentos -->
+  <div id="momentos" class="hidden">
+    <div class="carrossel">
+      <div class="slide active">
+        <img src="https://cdn.corenexis.com/file/c/54489352.jpg" alt="Especial 1" />
+        <p class="legenda">Minha maior alegria.</p>
+      </div>
+      <!-- Demais momentos... -->
+      <div class="navegacao-carrossel">
+        <button id="prevMomento">⟨</button>
+        <button id="nextMomento">⟩</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Temporizador -->
+  <div id="temporizador">
+    <h2>Contagem até nosso dia 💍</h2>
+    <div id="contador"></div>
+  </div>
+
+  <!-- QR Code (opcional) -->
+  <!-- <div id="qrAcesso" class="hidden">
+    <div class="qr-container">
+      <h2>Compartilhe nosso amor 💕</h2>
+      <p>Use o QR para acessar esta página em qualquer dispositivo:</p>
+      <img id="qrImagem" src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://SEU_LINK.com" alt="QR Code" />
+      <p class="qr-legenda">Escaneie com a câmera do celular 📱</p>
+    </div>
+  </div> -->
+
+</body>
+</html>

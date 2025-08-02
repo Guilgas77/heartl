@@ -1,0 +1,420 @@
+/* 🎀 Fonte personalizada */
+@import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+
+/* 🌐 Reset básico */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #fff;
+  overflow: hidden;
+}
+
+/* 🌌 Canvas fundo animado */
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+#matrix { z-index: 1; }
+#canvas { z-index: 2; }
+
+/* 🍔 Menu hamburguer */
+.menu {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 50;
+}
+.hamburger {
+  font-size: 36px;
+  background: #ffccdd;
+  padding: 12px 18px;
+  border-radius: 10px;
+  color: #cc0066;
+  box-shadow: 0 0 12px #ff99cc;
+  cursor: pointer;
+}
+.menu-list {
+  display: none;
+  background: #fff0f5;
+  padding: 15px;
+  margin-top: 10px;
+  border-radius: 12px;
+  box-shadow: 0 0 8px #ff99cc;
+}
+.menu-list li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+.menu-list a {
+  text-decoration: none;
+  color: #cc0066;
+  font-weight: bold;
+}
+
+/* ❤️ Coração */
+.container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+.heart {
+  width: 100px;
+  height: 90px;
+  background: red;
+  position: relative;
+  cursor: pointer;
+  transform: rotate(-45deg);
+  animation: beat 1s infinite ease-in-out;
+  z-index: 3;
+}
+.heart.explodindo {
+  animation: explodeHeart 1s forwards;
+}
+.heart::before,
+.heart::after {
+  content: "";
+  background: red;
+  border-radius: 50%;
+  position: absolute;
+  width: 100px;
+  height: 90px;
+}
+.heart::before { top: -50px; left: 0; }
+.heart::after  { top: 0; left: 50px; }
+
+@keyframes explodeHeart {
+  0% { transform: scale(1) rotate(-45deg); opacity: 1; }
+  50% { transform: scale(1.7) rotate(-45deg); opacity: 0.7; }
+  100% { transform: scale(0) rotate(-45deg); opacity: 0; }
+}
+
+.message {
+  margin-top: 20px;
+  font-size: 30px;
+  color: pink;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+/* 💌 Envelope padrão */
+#envelope {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, #fff0f5 0%, #ffcce0 100%);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 4;
+}
+#envelope.active {
+  display: flex;
+}
+.envelope-shape {
+  width: 0;
+  height: 0;
+  border-left: 150px solid transparent;
+  border-right: 150px solid transparent;
+  border-bottom: 100px solid #fff;
+  animation: aparecerEnvelope 1.5s ease forwards;
+}
+.envelope-body {
+  position: absolute;
+  top: 40px;
+  left: -150px;
+  width: 300px;
+  background: #fff;
+  padding: 20px;
+  border: 2px solid #ff99cc;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(255, 0, 128, 0.4);
+  font-family: 'Cookie', cursive;
+  text-align: center;
+}
+.envelope-front {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.envelope-front p {
+  font-size: 20px;
+  margin: 10px 0;
+  color: #cc0066;
+}
+.envelope-front button {
+  margin-top: 20px;
+  background: #ff3366;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 0 10px #ff99cc;
+}
+.envelope-front button:hover {
+  background: #cc0052;
+}
+
+/* ✨ Envelope com efeito 3D */
+#envelope3D {
+  width: 300px;
+  height: 200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  perspective: 1000px;
+  display: none;
+  z-index: 10;
+}
+#envelope3D.open .flap {
+  transform: rotateX(-150deg);
+}
+.flap {
+  width: 100%;
+  height: 100%;
+  background: #ff4d6d;
+  transform-origin: bottom;
+  transform: rotateX(0deg);
+  transition: transform 1s ease;
+  position: absolute;
+  z-index: 2;
+  border-radius: 8px 8px 0 0;
+}
+.letter {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  padding: 20px;
+  box-sizing: border-box;
+  transform: translateZ(-1px);
+  backface-visibility: hidden;
+  border-radius: 0 0 8px 8px;
+  font-size: 1.2rem;
+  color: #333;
+  position: relative;
+  z-index: 1;
+}
+
+/* 📜 Carta Aberta */
+#cartaAberta {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom right, #ffeef2, #fffafc);
+  padding: 60px 20px 100px;
+  overflow-y: auto;
+  display: none;
+  z-index: 5;
+}
+#cartaAberta.active {
+  display: block;
+}
+.carta-conteudo {
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
+  font-family: 'Cookie', cursive;
+  color: #cc0066;
+}
+.carta-conteudo h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+.carta-conteudo p {
+  font-size: 24px;
+  margin-bottom: 40px;
+}
+.motivos-lista {
+  list-style: none;
+  padding: 0;
+  font-size: 22px;
+  color: #444;
+}
+.motivos-lista li {
+  background: #fff0f5;
+  margin-bottom: 10px;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px #ff99cc;
+}
+#irParaMomentos {
+  margin-top: 30px;
+  background: #ff99cc;
+  border: none;
+  padding: 14px 24px;
+  font-size: 20px;
+  color: white;
+  border-radius: 12px;
+  box-shadow: 0 0 8px #cc0066;
+  cursor: pointer;
+}
+
+/* 💫 Galeria & Momentos */
+#galeria,
+#momentos {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #fffafc;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 6;
+}
+#galeria.active,
+#momentos.active {
+  display: flex;
+}
+.carrossel {
+  max-width: 300px;
+  width: 90%;
+  text-align: center;
+}
+.slide {
+  display: none;
+}
+.slide.active {
+  display: block;
+}
+.slide img {
+  max-width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 0 10px #ff99cc;
+}
+.legenda {
+  margin-top: 12px;
+  font-size: 20px;
+  color: #cc0066;
+}
+.navegacao-carrossel {
+  margin-top: 20px;
+}
+.navegacao-carrossel button {
+  background: #ffccdd;
+  border: none;
+  font-size: 24px;
+  padding: 8px 16px;
+  margin: 0 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #cc0066;
+  box-shadow: 0 0 6px #ff99cc;
+}
+
+/* ⏳ Temporizador */
+#temporizador {
+  z-index: 15;
+  position: fixed;
+  bottom: 15px;
+  right: 20px;
+  background: #fff0f5;
+  padding: 16px 24px;
+  border-radius: 16px;
+  box-shadow: 0 0 12px #ff99cc;
+}
+#temporizador h2 {
+  font-size: 20px;
+  margin: 0;
+  color: #cc0066;
+}
+#contador {
+  font-size: 30px;
+  font-weight: bold;
+  color: #cc0066;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); color: #cc0066; }
+  50% { transform: scale(1.1); color: #ff6699; }
+}
+
+/* 🔼 Botão Subir */
+#btnSubir {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  padding: 10px 15px;
+  font-size: 16px;
+  background-color: #e91e63;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: none;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s ease;
+}
+#btnSubir:hover {
+  opacity: 0.8;
+}
+
+/* 🎭 Controle de visibilidade */
+.hidden {
+  display: none !important;
+  opacity: 0;
+  pointer-events: none;
+}
+.active {
+  display: flex !important;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* 📱 Responsividade adicional */
+@media screen and (max-width: 600px) {
+  .hamburger {
+    font-size: 28px;
+    padding: 10px 14px;
+  }
+  .menu-list {
+    width: 160px;
+  }
+  .message {
+    font-size: 24px;
+  }
+  .envelope-body {
+    width: 90%;
+    padding: 15px;
+    font-size: 16px;
+  }
+  .envelope-front button {
+    font-size: 16px;
+    padding: 10px 16px;
+  }
+  #cartaAberta h1 {
+    font-size: 36px;
+  }
+  #cartaAberta p,
+  .motivos-lista li {
+    font-size: 18px;
+    padding: 12px;
+  }
+  #irParaMomentos {
+    font-size: 16px;
+    padding: 12px 20px;
+  }
+  #temporizador {
+    bottom: 10px;
+    right: 10px;
+    padding: 12px 16px;
+  }
+  #contador {
+    font-size: 22px;
+  }
+}
